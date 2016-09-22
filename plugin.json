@@ -1,0 +1,29 @@
+{
+  "name": "Analytics",
+  "id": "grafana-analytics-datasource",
+  "type": "datasource",
+
+  "staticRoot": ".",
+
+  "metrics": true,
+  "annotations": false,
+
+  "info": {
+    "description": "WSO2 Analytics API datasource",
+    "author": {
+      "name": "Udara Rathnayake",
+      "url": "http://bit.ly/udarakr"
+    },
+    "links": [
+      {"name": "GitHub", "url": "https://github.com/udarakr/grafana-analytics-datasource"},
+      {"name": "MIT License", "url": "https://github.com/udarakr/grafana-analytics-datasource/blob/master/LICENSE"}
+    ],
+    "version": "0.0.1",
+    "updated": "2016-09-22"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "3.x.x",
+    "plugins": [ ]
+  }
+}
