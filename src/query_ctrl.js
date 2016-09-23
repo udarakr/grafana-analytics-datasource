@@ -15,7 +15,7 @@ export class AnalyticsDatasourceQueryCtrl extends QueryCtrl {
         this.repoSegment = uiSegmentSrv.getSegmentForValue(this.target.table, 'select table');
     }
 
-    gettables() {
+    getTables() {
         return {}
     }
 
