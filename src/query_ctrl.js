@@ -11,17 +11,30 @@ export class AnalyticsDatasourceQueryCtrl extends QueryCtrl {
         this.uiSegmentSrv = uiSegmentSrv;
 
         this.target.table = this.target.table || '';
+        this.target.metric = this.target.metric || '';
 
-        this.repoSegment = uiSegmentSrv.getSegmentForValue(this.target.table, 'select table');
+        this.tableSegment = uiSegmentSrv.getSegmentForValue(this.target.table, 'select table');
+        this.metricSegment = uiSegmentSrv.getSegmentForValue(this.target.metric, 'select metric');
     }
 
     getTables() {
-        return {}
+        return this.datasource.metricFindQuery({'query': 'table', 'target': this.target})
+            .then(this.uiSegmentSrv.transformToSegments(false));
+    }
+
+    getMetricSegments() {
+        return this.datasource.metricFindQuery({'query': 'metric', 'target': this.target})
+            .then(this.uiSegmentSrv.transformToSegments(false));
     }
 
     tableChanged() {
-        this.target.table = this.repoSegment.value;
-        //this.panelCtrl.refresh();
+        this.target.table = this.tableSegment.value;
+        this.panelCtrl.refresh();
+    }
+
+    metricSegmentChanged() {
+        this.target.metric = this.metricSegment.value;
+        this.panelCtrl.refresh();
     }
 }
 
