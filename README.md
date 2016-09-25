@@ -6,7 +6,7 @@ Sample grafana datasource, which can configure with the WSO2 Analytics API.
 - npm install
 - grunt
 
-### Configuration
+### Analytics Datasource Configuration
 
 ![](https://github.com/udarakr/grafana-analytics-datasource/blob/master/doc/config.png)
 
