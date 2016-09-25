@@ -14,3 +14,5 @@ Sample grafana datasource, which can configure with the WSO2 Analytics API.
 ### Analytics API usage sample
 
 ![](https://github.com/udarakr/grafana-analytics-datasource/blob/master/doc/sample.png)
+
+Inspired by, [grafana-github-datasource](https://github.com/jsatt/grafana-github-datasource) 
