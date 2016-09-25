@@ -71,21 +71,34 @@ System.register(['app/plugins/sdk', './css/query-editor.css!'], function (_expor
                     _this.uiSegmentSrv = uiSegmentSrv;
 
                     _this.target.table = _this.target.table || '';
+                    _this.target.metric = _this.target.metric || '';
 
-                    _this.repoSegment = uiSegmentSrv.getSegmentForValue(_this.target.table, 'select table');
+                    _this.tableSegment = uiSegmentSrv.getSegmentForValue(_this.target.table, 'select table');
+                    _this.metricSegment = uiSegmentSrv.getSegmentForValue(_this.target.metric, 'select metric');
                     return _this;
                 }
 
                 _createClass(AnalyticsDatasourceQueryCtrl, [{
-                    key: 'gettables',
-                    value: function gettables() {
-                        return {};
+                    key: 'getTables',
+                    value: function getTables() {
+                        return this.datasource.metricFindQuery({ 'query': 'table', 'target': this.target }).then(this.uiSegmentSrv.transformToSegments(false));
+                    }
+                }, {
+                    key: 'getMetricSegments',
+                    value: function getMetricSegments() {
+                        return this.datasource.metricFindQuery({ 'query': 'metric', 'target': this.target }).then(this.uiSegmentSrv.transformToSegments(false));
                     }
                 }, {
                     key: 'tableChanged',
                     value: function tableChanged() {
-                        this.target.table = this.repoSegment.value;
-                        //this.panelCtrl.refresh();
+                        this.target.table = this.tableSegment.value;
+                        this.panelCtrl.refresh();
+                    }
+                }, {
+                    key: 'metricSegmentChanged',
+                    value: function metricSegmentChanged() {
+                        this.target.metric = this.metricSegment.value;
+                        this.panelCtrl.refresh();
                     }
                 }]);
 
